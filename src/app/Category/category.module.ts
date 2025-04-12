@@ -6,6 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
@@ -21,6 +24,9 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
 })
 export class CategoryModule {}

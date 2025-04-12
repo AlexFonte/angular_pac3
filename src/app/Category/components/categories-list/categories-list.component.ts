@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducers';
@@ -10,10 +12,21 @@ import { CategoryDTO } from '../../models/category.dto';
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.scss'],
 })
-export class CategoriesListComponent {
+export class CategoriesListComponent implements AfterViewInit {
+  displayedColumns: string[] = [
+    'id',
+    'title',
+    'description',
+    'css_color',
+    'actions',
+  ];
   categories: CategoryDTO[];
+  dataSource = new MatTableDataSource<CategoryDTO>([]);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   private userId: string;
+
   constructor(private router: Router, private store: Store<AppState>) {
     this.userId = '';
     this.categories = new Array<CategoryDTO>();
@@ -26,6 +39,7 @@ export class CategoriesListComponent {
 
     this.store.select('categories').subscribe((categories) => {
       this.categories = categories.categories;
+      this.dataSource = new MatTableDataSource<CategoryDTO>(this.categories);
     });
 
     this.loadCategories();
@@ -59,5 +73,9 @@ export class CategoriesListComponent {
         CategoriesAction.deleteCategory({ categoryId: categoryId })
       );
     }
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 }
