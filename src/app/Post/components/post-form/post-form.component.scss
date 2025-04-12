@@ -1,3 +1,21 @@
+.post-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
 .error {
   color: red;
 }
@@ -34,6 +52,7 @@
     bottom: 0;
     opacity: 0;
   }
+
   to {
     bottom: 30px;
     opacity: 1;
@@ -45,6 +64,7 @@
     bottom: 0;
     opacity: 0;
   }
+
   to {
     bottom: 30px;
     opacity: 1;
@@ -56,6 +76,7 @@
     bottom: 30px;
     opacity: 1;
   }
+
   to {
     bottom: 0;
     opacity: 0;
@@ -67,6 +88,7 @@
     bottom: 30px;
     opacity: 1;
   }
+
   to {
     bottom: 0;
     opacity: 0;

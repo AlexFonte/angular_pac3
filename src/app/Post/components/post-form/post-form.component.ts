@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -18,6 +25,12 @@ import { PostDTO } from '../../models/post.dto';
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0.2 })),
+      transition('void <=> *', animate('800ms ease-in-out')),
+    ]),
+  ],
 })
 export class PostFormComponent implements OnInit {
   post: PostDTO;
