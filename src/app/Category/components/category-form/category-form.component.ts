@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -15,6 +22,12 @@ import { CategoryDTO } from '../../models/category.dto';
   selector: 'app-category-form',
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0.2 })),
+      transition('void <=> *', animate('800ms ease-in-out')),
+    ]),
+  ],
 })
 export class CategoryFormComponent implements OnInit {
   category: CategoryDTO;

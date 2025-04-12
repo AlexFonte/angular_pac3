@@ -1,67 +1,61 @@
 <div style="margin-left: auto; margin-right: auto">
   <p id="categoryFeedback"></p>
 </div>
-<div>
-  <h1>Category form</h1>
-  <form
-    *ngIf="categoryForm"
-    [formGroup]="categoryForm"
-    (ngSubmit)="saveCategory()"
-  >
-    <div>
-      <label for="title">Title:</label>
-      <input type="text" [formControl]="title" />
 
-      <div *ngIf="title.errors">
-        <div
-          *ngIf="title.errors && isValidForm != null && !isValidForm"
-          [ngClass]="'error'"
-        >
-          <div *ngIf="title.errors.required">Title is required</div>
 
-          <div *ngIf="title.errors.maxlength">
-            Title can be max 55 characters long.
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="category-container" [@fadeInOut]>
+  <mat-card class="mat-elevation-z4">
+    <mat-card-header>
+      <mat-card-title>Category form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="padding-top: 20px">
+      <form *ngIf="categoryForm" [formGroup]="categoryForm" (ngSubmit)="saveCategory()">
 
-    <div>
-      <label for="description">Description:</label>
-      <input type="text" [formControl]="description" />
+        <section>
+          <mat-form-field appearance="outline" class="max-width">
+            <mat-label for="title">Title:</mat-label>
+            <input matInput type="text" [formControl]="title" required />
+            <mat-error *ngIf="title.hasError('required')">Title is <strong>required</strong></mat-error>
+            <mat-error *ngIf="!title.hasError('required') && title.hasError('maxlength')">Title can be max 55 characters
+              long.</mat-error>
+          </mat-form-field>
+        </section>
 
-      <div *ngIf="description.errors">
-        <div
-          *ngIf="description.errors && isValidForm != null && !isValidForm"
-          [ngClass]="'error'"
-        >
-          <div *ngIf="description.errors.required">Description is required</div>
 
-          <div *ngIf="description.errors.maxlength">
-            Description can be max 255 characters long.
-          </div>
-        </div>
-      </div>
-    </div>
+        <section>
+          <mat-form-field appearance="outline" class="max-width">
+            <mat-label for="description">Description:</mat-label>
+            <input matInput type="text" [formControl]="description" required />
+            <mat-error *ngIf="description.hasError('required')">Description is <strong>required</strong></mat-error>
+            <mat-error *ngIf="!description.hasError('required') && description.hasError('maxlength')">Description can be
+              max
+              255 characters long.</mat-error>
+          </mat-form-field>
+        </section>
 
-    <div>
-      <label for="description">Css color:</label>
-      <input type="text" [formControl]="css_color" />
 
-      <div *ngIf="css_color.errors">
-        <div
-          *ngIf="css_color.errors && isValidForm != null && !isValidForm"
-          [ngClass]="'error'"
-        >
-          <div *ngIf="css_color.errors.required">Css color is required</div>
+        <section>
+          <mat-form-field appearance="outline" class="max-width">
+            <mat-label for="description">Css color:</mat-label>
+            <input matInput type="text" [formControl]="css_color" required />
+            <mat-error *ngIf="css_color.hasError('required')">Css color is <strong>required</strong></mat-error>
+            <mat-error *ngIf="!css_color.hasError('required') && css_color.hasError('maxlength')">
+              Css color can be max 7 characters long.
+            </mat-error>
+          </mat-form-field>
 
-          <div *ngIf="css_color.errors.maxlength">
-            Css color can be max 7 characters long.
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <button type="submit">SAVE</button>
-  </form>
+        <section>
+          <label>Preview color:</label>
+          <div class="show-css-color" [style.background-color]="css_color.value"></div>
+        </section>
+
+        <section style="text-align: center">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!categoryForm.valid"
+            class="max-width">SAVE</button>
+        </section>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
