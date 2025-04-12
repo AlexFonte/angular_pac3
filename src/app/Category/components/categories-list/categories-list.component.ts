@@ -1,5 +1,13 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -11,8 +19,16 @@ import { CategoryDTO } from '../../models/category.dto';
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0.2 })),
+      transition('void <=> *', animate('800ms ease-in-out')),
+    ]),
+  ],
 })
 export class CategoriesListComponent implements AfterViewInit {
+  // categories: CategoryDTO[];
+
   displayedColumns: string[] = [
     'id',
     'title',
@@ -20,16 +36,16 @@ export class CategoriesListComponent implements AfterViewInit {
     'css_color',
     'actions',
   ];
-  categories: CategoryDTO[];
   dataSource = new MatTableDataSource<CategoryDTO>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   private userId: string;
 
   constructor(private router: Router, private store: Store<AppState>) {
     this.userId = '';
-    this.categories = new Array<CategoryDTO>();
+    // this.categories = new Array<CategoryDTO>();
 
     this.store.select('auth').subscribe((auth) => {
       if (auth.credentials.user_id) {
@@ -38,8 +54,8 @@ export class CategoriesListComponent implements AfterViewInit {
     });
 
     this.store.select('categories').subscribe((categories) => {
-      this.categories = categories.categories;
-      this.dataSource = new MatTableDataSource<CategoryDTO>(this.categories);
+      // this.categories = categories.categories;
+      this.dataSource.data = categories.categories;
     });
 
     this.loadCategories();
@@ -77,5 +93,6 @@ export class CategoriesListComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

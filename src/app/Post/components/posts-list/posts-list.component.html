@@ -1,29 +1,71 @@
-<h2>Post List</h2>
-<button (click)="createPost()">ADD</button>
+<div class="post-list-container">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Post List</mat-card-title>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="createPost()">
+            <mat-icon>add</mat-icon> ADD POST
+          </button>
+        </mat-card-actions>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content style="padding-top: 20px">
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>TITLE</th>
-      <th>DESCRIPTION</th>
-      <th>NUM LIKES</th>
-      <th>NUM DISLIKES</th>
-      <th>ACTIONS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let post of posts">
-      <td>{{ post.postId }}</td>
-      <td>{{ post.title }}</td>
-      <td>{{ post.description }}</td>
-      <td>{{ post.num_likes }}</td>
-      <td>{{ post.num_dislikes }}</td>
+      <table mat-table [dataSource]="dataSource" matSort>
 
-      <td>
-        <button (click)="updatePost(post.postId)">UPDATE</button>
-        <button (click)="deletePost(post.postId)">DELETE</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let post">{{ post.postId }}</td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>TITLE</th>
+          <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>DESCRIPTION</th>
+          <td mat-cell *matCellDef="let post">{{ post.description }}</td>
+        </ng-container>
+
+        <!-- Likes Column -->
+        <ng-container matColumnDef="num_likes">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>NUM LIKES</th>
+          <td mat-cell *matCellDef="let post">{{ post.num_likes }}</td>
+        </ng-container>
+
+        <!-- Dislikes Column -->
+        <ng-container matColumnDef="num_dislikes">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>NUM DISLIKES</th>
+          <td mat-cell *matCellDef="let post">{{ post.num_dislikes }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>ACTIONS</th>
+          <td mat-cell *matCellDef="let post">
+            <button mat-icon-button color="primary" (click)="updatePost(post.postId)" matTooltip="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deletePost(post.postId)" matTooltip="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+      <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons
+        aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+</div>
