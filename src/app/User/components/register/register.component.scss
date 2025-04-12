@@ -1,3 +1,22 @@
+.register-container {
+  max-width: 500px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+
 .error {
   color: red;
 }
@@ -75,19 +94,4 @@
     bottom: 0;
     opacity: 0;
   }
-}
-
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px;
-  width: 700px;
-  margin: auto;
-}
-
-.max-width {
-  width: 100%;
 }

@@ -30,6 +30,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isValidForm: boolean | null;
 
+  showPassword: boolean = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>
