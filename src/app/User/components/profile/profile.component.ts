@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
   isValidForm: boolean | null;
+  showPassword: boolean = false;
 
   private userId: string;
 

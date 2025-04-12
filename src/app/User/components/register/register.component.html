@@ -2,7 +2,7 @@
   <p id="registerFeedback"></p>
 </div>
 
-<div class="register-container">
+<div class="register-container" [@fadeInOut]>
   <mat-card class="mat-elevation-z4">
     <mat-card-header>
       <mat-card-title>Register</mat-card-title>
@@ -11,6 +11,7 @@
     <mat-card-content style="padding-top: 20px">
       <form [formGroup]="registerForm" (ngSubmit)="register()">
         <div class="field-container">
+
           <section>
             <mat-form-field appearance="outline" class="max-width">
               <mat-label for="name">Name: </mat-label>
@@ -27,7 +28,7 @@
             <mat-form-field appearance="outline" class="max-width">
               <mat-label for="surname1">Surname1: </mat-label>
               <input matInput type="text" [formControl]="surname_1" required />
-              <mat-error *ngIf="surname_1.hasError('required')">Name is <strong>required</strong></mat-error>
+              <mat-error *ngIf="surname_1.hasError('required')">Surame1 is <strong>required</strong></mat-error>
               <mat-error *ngIf="!surname_1.hasError('required') && surname_1.hasError('minlength')">Surname1 must be at
                 least 5
                 characters long.</mat-error>
@@ -95,6 +96,7 @@
                 characters long</mat-error>
             </mat-form-field>
           </section>
+
           <section style="text-align: center">
             <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid"
               class="max-width">Register</button>

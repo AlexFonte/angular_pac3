@@ -24,7 +24,7 @@ import { AuthDTO } from '../models/auth.dto';
   animations: [
     trigger('fadeInOut', [
       state('void', style({ opacity: 0.2 })),
-      transition('void <=> *', animate('1000ms ease-in-out')),
+      transition('void <=> *', animate('800ms ease-in-out')),
     ]),
   ],
 })
