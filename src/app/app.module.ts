@@ -1,15 +1,7 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -22,17 +14,12 @@ import { CategoryModule } from './Category/category.module';
 import { PostModule } from './Post/post.module';
 import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
-import { SpinnerComponent } from './Shared/Components/spinner/spinner.component';
+import { SpinnerModule } from './Shared/Components/spinner/spinner.module';
 import { AuthInterceptorService } from './Shared/Services/auth-interceptor.service';
 import { UserModule } from './User/user.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SpinnerComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
 
   imports: [
     BrowserModule,
@@ -54,14 +41,7 @@ import { UserModule } from './User/user.module';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatProgressSpinnerModule,
+    SpinnerModule,
   ],
   providers: [
     {
