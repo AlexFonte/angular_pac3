@@ -12,14 +12,13 @@ import { appReducers, EffectsArray } from './app.reducers';
 import { AuthModule } from './Auth/auth.module';
 import { CategoryModule } from './Category/category.module';
 import { PostModule } from './Post/post.module';
-import { FooterComponent } from './Shared/Components/footer/footer.component';
-import { HeaderComponent } from './Shared/Components/header/header.component';
+import { HeaderModule } from './Shared/Components/header/header.module';
 import { SpinnerModule } from './Shared/Components/spinner/spinner.module';
 import { AuthInterceptorService } from './Shared/Services/auth-interceptor.service';
 import { UserModule } from './User/user.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent],
 
   imports: [
     BrowserModule,
@@ -42,6 +41,7 @@ import { UserModule } from './User/user.module';
       logOnly: environment.production,
     }),
     SpinnerModule,
+    HeaderModule,
   ],
   providers: [
     {
