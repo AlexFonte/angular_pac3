@@ -7,6 +7,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,11 +22,17 @@ import { CategoryModule } from './Category/category.module';
 import { PostModule } from './Post/post.module';
 import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
+import { SpinnerComponent } from './Shared/Components/spinner/spinner.component';
 import { AuthInterceptorService } from './Shared/Services/auth-interceptor.service';
 import { UserModule } from './User/user.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    SpinnerComponent,
+  ],
 
   imports: [
     BrowserModule,
@@ -54,6 +61,7 @@ import { UserModule } from './User/user.module';
     MatCardModule,
     MatIconModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
