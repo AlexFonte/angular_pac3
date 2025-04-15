@@ -1,3 +1,11 @@
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -11,6 +19,25 @@ import { PostService } from '../../services/post.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('cardAnimation', [
+      transition('* => *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(20px)' }),
+            stagger('200ms', [
+              animate(
+                '600ms ease-in-out',
+                style({ opacity: 1, transform: 'translateY(0)' })
+              ),
+            ]),
+          ],
+          { optional: true }
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent {
   posts: PostDTO[];
