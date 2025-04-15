@@ -1,8 +1,23 @@
 .register-container {
-  max-width: 500px;
-  width: 100%;
+  // max-width: 500px;
+  width: 90%;
   margin: 20px auto;
   padding: 10px;
+
+  @media screen and (min-width: 800px) {
+    width: 60%;
+
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 50%;
+
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 34%;
+
+  }
 }
 
 .max-width {

@@ -1,8 +1,23 @@
 .category-container {
-  max-width: 600px;
-  width: 100%;
+  // max-width: 400px;
+  width: 90%;
   margin: 20px auto;
   padding: 10px;
+
+  @media screen and (min-width: 800px) {
+    width: 60%;
+
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 50%;
+
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 34%;
+
+  }
 }
 
 .max-width {
