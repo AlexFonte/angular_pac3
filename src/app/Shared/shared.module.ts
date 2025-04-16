@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardComponent } from './Components/card/card.component';
 
 const SharedModuleComponents = [
   BrowserModule,
@@ -33,7 +34,9 @@ const SharedModuleComponents = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CardComponent
+  ],
   imports: [CommonModule, SharedModuleComponents],
   exports: [SharedModuleComponents],
 })
