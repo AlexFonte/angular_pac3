@@ -20,22 +20,38 @@ export class DashboardComponent implements OnInit {
     responsive: true,
     indexAxis: 'y',
     scales: {
+      y: {
+        ticks: {
+          color: '#000',
+        },
+        title: {
+          display: true,
+          text: 'Totals',
+          font: { size: 16 },
+        },
+        max: 0,
+      },
       x: {
         ticks: {
           stepSize: 1,
+          color: '#000',
         },
         title: {
           display: true,
           text: 'Cantidad',
+          color: '#000',
+          font: { size: 16 },
         },
         max: 0,
       },
     },
+
     plugins: {
       title: {
         display: true,
         text: 'Total Likes & Dislikes',
         font: { size: 24, weight: 'bold' },
+        color: '#000',
       },
     },
   };
@@ -43,10 +59,10 @@ export class DashboardComponent implements OnInit {
   barChartType = 'bar' as const;
 
   barChartData: ChartData<'bar'> = {
-    labels: ['TOTALS'],
+    labels: ['Totals'],
     datasets: [
-      { data: [0], label: 'LIKES' },
-      { data: [0], label: 'DISLIKES' },
+      { data: [0], label: 'Likes' },
+      { data: [0], label: 'Dislikes' },
     ],
   };
 
@@ -80,8 +96,8 @@ export class DashboardComponent implements OnInit {
     this.barChartData = {
       ...this.barChartData,
       datasets: [
-        { data: [this.numLikes], label: 'LIKES' },
-        { data: [this.numDislikes], label: 'DISLIKES' },
+        { data: [this.numLikes], label: 'Likes' },
+        { data: [this.numDislikes], label: 'Dislikes' },
       ],
     };
     const maxValue = Math.max(this.numLikes, this.numDislikes) + 1;
