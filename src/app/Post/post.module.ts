@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
 import { FormatDatePipe } from '../Shared/Pipes/format-date.pipe';
 import { SharedModule } from '../Shared/shared.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -16,6 +17,6 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
     FormatDatePipe,
     DashboardComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, SharedModule],
+  imports: [CommonModule, ReactiveFormsModule, SharedModule, NgChartsModule],
 })
 export class PostModule {}

@@ -12,9 +12,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const SharedModuleComponents = [
+  BrowserModule,
   BrowserAnimationsModule,
   MatFormFieldModule,
   MatInputModule,

@@ -1,4 +1,20 @@
-<div *ngIf="posts">
+<!-- <div *ngIf="posts">
   <p>Num likes: {{ numLikes }}</p>
   <p>Num dislikes: {{ numDislikes }}</p>
+</div> -->
+
+
+<div class="dashboard-container">
+
+  <mat-card class="mat-elevation-z4">
+
+    <mat-card-content style="padding-top: 20px">
+      <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
+      </canvas>
+    </mat-card-content>
+
+    <!-- <mat-card-actions>
+      <button mat-raised-button color="accent" class="max-width">Refresh</button>
+    </mat-card-actions> -->
+  </mat-card>
 </div>

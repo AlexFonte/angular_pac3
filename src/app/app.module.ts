@@ -16,6 +16,7 @@ import { HeaderModule } from './Shared/Components/header/header.module';
 import { SpinnerModule } from './Shared/Components/spinner/spinner.module';
 import { AuthInterceptorService } from './Shared/Services/auth-interceptor.service';
 import { UserModule } from './User/user.module';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,7 @@ import { UserModule } from './User/user.module';
     }),
     SpinnerModule,
     HeaderModule,
+    NgChartsModule,
   ],
   providers: [
     {
